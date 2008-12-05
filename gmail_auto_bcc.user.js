@@ -108,7 +108,6 @@ window.addEventListener('load', function() {
                     switch(wrapperElement.tagName) {
                         case "DIV"   : 
                             // this code is executed when we sure that user clicked on send button
-                            // check enabled and return if not
                             
                             // find form element
                             var formElementContainer = root.getElementsByClassName(options.FORM_WRAPPER_CLASS).item(0);
