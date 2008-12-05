@@ -36,14 +36,6 @@ var helper = {
         GM_log('\n' + message);
     },
     
-    inspect : function(object) {
-        var verbose = typeof object + "\n";
-        for (key in object) {
-            verbose += key + ': ' + object[key] + '\n';
-        }
-        return verbose;
-    },
-    
     // returns true if if element has classname and false if not
     hasClassName : function(element, className) {
         if (element.className.length == 0) return false;
@@ -74,17 +66,15 @@ var helper = {
         return value;
     }
 }
+
 var options = {};
 
 window.addEventListener('load', function() {
     if (unsafeWindow.gmonkey) {
-        
         // options and defaults
         options = {
             SEND_BUTTON_CLASS           : "goog-button",
             SEND_BUTTON_WRAPPER_CLASS   : "c1I77d yCMBJb",
-            TOP_WRAPPER_CLASS           : "LlWyA",
-            BOTTOM_WRAPPER_CLASS        : "CoUvaf",
             FORM_WRAPPER_CLASS          : "uQLZXb",
             gBccEnabled                 : helper.getOption('gBccEnabled', true),
             gBccPopup                   : helper.getOption('gBccPopup', false),
@@ -136,8 +126,7 @@ window.addEventListener('load', function() {
                             options.email = GM_getValue('gBccMail');
                             if (!options.email) {
                                 options.email = prompt("gmailAutoBcc: Where do you want to bcc/cc all your outgoing gmail?");
-                                if (!options.email)
-                                    return;
+                                if (!options.email) return;
                                 GM_setValue('gBccMail', options.email);
                             }
                             
@@ -159,7 +148,7 @@ window.addEventListener('load', function() {
                                     options.email = prompt("gmailAutoBcc: Where do you want to bcc/cc your outgoing gmail sent from identity: " + from + "?\n\n Leave blank to disable gmailAutoBcc for this identity.");
                                     if (!options.email) {
                                         GM_setValue('gBccMail_' + from, "disabled");
-                                        return;
+                                        return false;
                                     }
                                     GM_setValue('gBccMail_' + from, options.email);
                                 }
@@ -171,7 +160,7 @@ window.addEventListener('load', function() {
                             // show adding confirmation
                             if (options.gBccPopup) {
                                 if (!confirm("Do you want to add BCC to " + options.email + "?")) {
-                                    return;
+                                    return false;
                                 }
                             }
                             
