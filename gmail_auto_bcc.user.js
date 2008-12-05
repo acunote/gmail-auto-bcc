@@ -20,6 +20,11 @@
 // gBccEnabled = true / false        
 // gBccPopup = true / false    Pops up a prompt before adding BCC
 // gBccHeader = "bcc"        Header to add. By default BCC.
+var console = {
+    log : function(message) {
+        GM_log('\n' + message);
+    }
+}
 
 window.addEventListener('load', function() {
     if (unsafeWindow.gmonkey) {
