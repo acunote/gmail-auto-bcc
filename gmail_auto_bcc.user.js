@@ -1,10 +1,9 @@
 /* This greasemonkey script automatically BCCs (or CCs) outgoing email from 
  * a gmail address to a specified email address
+ *
+ * Copyright (c) 2008, Ilya Furman, smashlong<AT>gmail<DOT>com 
+ * Based on script from Jaidev K Sridhar mail<AT>jaidev<DOT>info
  * 
- * Author: Ilya Furman smashlong<AT>gmail<DOT>com 
- *         based on script from Jaidev K Sridhar mail<AT>jaidev<DOT>info
- * 
- * Copyright (c) 2005-2008, Ilya Furman
  * Released under the GPL license
  * http://www.gnu.org/copyleft/gpl.html
  */
